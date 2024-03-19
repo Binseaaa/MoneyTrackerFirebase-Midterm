@@ -21,13 +21,13 @@ const getTracker = async () => {
     })
 }
 
-const total = () => {
-    let total = 0;
-    track.value.forEach(exp => {
-        total += parseFloat(exp.data.Amount)
-    })
-    return total
-}
+// const total = () => {
+//     let total = 0;
+//     track.value.forEach(exp => {
+//         total += parseFloat(exp.data.Amount)
+//     })
+//     return total
+// }
 
 const totExpense = () => {
     return track.value.reduce((total, dataT) => {
@@ -60,8 +60,35 @@ onMounted(() => {
 
 <template>
     <div class="text-center text-green-600 text-5xl font-bold">Summary</div>
-    <div class="h-5/6 border m-5 rounded-2xl w-auto bg-slate-100">
-        <div class="relative border-2 border-black m-5 rounded-2xl overflow-x-auto shadow-md">
+    <div class="flex justify-center">
+      <div class="w-2/6">
+        <div class="border rounded-lg bg-white shadow-md m-5 transition hover:scale-125 duration-500">
+          <div class="p-5">
+            <h1 class="text-xl font-bold text-green-600 mb-3">Total Income</h1>
+            <h1 class="text-3xl font-bold">₱{{ totIncome() }}</h1>
+          </div>
+        </div>
+  
+        <div class="border rounded-lg bg-white shadow-md m-5 transition hover:scale-125 duration-500">
+          <div class="p-5">
+            <h1 class="text-xl font-bold text-red-600 mb-3">Total Expenses</h1>
+            <h1 class="text-3xl font-bold">₱{{ totExpense() }}</h1>
+          </div>
+        </div>
+  
+        <div class="border rounded-lg bg-white shadow-md m-5 transition hover:scale-125 duration-500">
+          <div class="p-5">
+            <h1 class="text-xl font-bold mb-3">Balance</h1>
+            <h1 class="text-3xl font-bold">₱{{ balance() }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  
+
+        <!-- <div class="relative border-2 border-black m-5 rounded-2xl overflow-x-auto shadow-md">
                 <div class="h-96 overflow-x-auto" ref="tableContainer">
                     <table class="w-full text-sm text-left rtl:text-right mb-16">
                         <thead class="text-lg text-gray-700 uppercase dark:bg-green-700 text-slate-50">
@@ -82,11 +109,4 @@ onMounted(() => {
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="text-3xl px-5">
-                <h1 class="text-green-600 font-bold">Total Income: ₱{{ totIncome() }}</h1>
-                <h1 class="text-red-600 font-bold">Total Expenses: ₱{{ totExpense() }}</h1>
-                <h1 class="font-bold">Balance: ₱{{ balance() }}</h1>
-            </div>
-    </div>
-</template>
+            </div> -->
